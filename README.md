@@ -1,2 +1,2 @@
-# Auto-QQimg-and-RGBimg
-python
+# 自动缓存QQ头像以及生成头像平均颜色图片
+基于 flask 提供访问服务
