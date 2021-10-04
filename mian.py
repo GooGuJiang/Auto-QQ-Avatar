@@ -10,7 +10,7 @@ import md55 # 文件检测
 app = Flask(__name__)
 @app.route('/rgb')
 def rggbb_img():
-    durl = "https://q1.qlogo.cn/g?b=qq&nk=2774133374&s=640"
+    durl = "https://q1.qlogo.cn/g?b=qq&nk=QQ号&s=640"
     if os.path.isfile('./tmp/dimg.png') == True:
         dwimg = requests.get(durl)
         
@@ -50,7 +50,7 @@ def rggbb_img():
 
 @app.route('/img')
 def qq_img():
-    durl = "https://q1.qlogo.cn/g?b=qq&nk=2774133374&s=640"
+    durl = "https://q1.qlogo.cn/g?b=qq&nk=QQ号&s=640"
     if os.path.isfile('./qqimg/dimg.png') == True:
         dwimg = requests.get(durl)
         
