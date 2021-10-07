@@ -1,16 +1,27 @@
 import os
-from flask import Flask
+from flask import Flask,redirect
 from flask import abort
 import outimg as o
 import requests
 from flask import make_response
 import md55 # 文件检测
+import yaml
 
+def qqset():
+    with open('settings.yml', 'r') as f: #读取配置文件?
+        qq = yaml.load(f.read(),Loader=yaml.FullLoader)
+        token = qq['QQnum']
+    return token
 
 app = Flask(__name__)
+@app.route('/')
+def index():
+    return redirect('https://gmoe.cc', code=302)
+
 @app.route('/rgb')
 def rggbb_img():
-    durl = "https://q1.qlogo.cn/g?b=qq&nk=QQ号&s=640"
+
+    durl = "https://q1.qlogo.cn/g?b=qq&nk="+str(qqset())+"&s=640"
     if os.path.isfile('./tmp/dimg.png') == True:
         dwimg = requests.get(durl)
         
@@ -50,7 +61,7 @@ def rggbb_img():
 
 @app.route('/img')
 def qq_img():
-    durl = "https://q1.qlogo.cn/g?b=qq&nk=QQ号&s=640"
+    durl = "https://q1.qlogo.cn/g?b=qq&nk="+str(qqset())+"&s=640"
     if os.path.isfile('./qqimg/dimg.png') == True:
         dwimg = requests.get(durl)
         
